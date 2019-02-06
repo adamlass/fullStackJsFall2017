@@ -4,7 +4,7 @@ import {
   Button, TextInput, ActivityIndicator
 } from 'react-native';
 import { Constants} from "expo";
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator, createAppContainer }  from 'react-navigation';
 
 const Touchable = (props) => (
   <TouchableOpacity style={styles.button} onPress={props.onPress}>
@@ -61,11 +61,11 @@ export default App = () => (
   </View>
 )
 
-const RouteStack = StackNavigator({
+const RouteStack = createAppContainer(createStackNavigator({
   Home: { screen: HomeScreen },
   randomperson: { screen: RandomPerson },
   fetchperson: { screen: FetchPerson },
-});
+}));
 
 const styles = StyleSheet.create({
   button: {
